@@ -86,9 +86,29 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'My Love For Evermore, Mark "Sparky" Philips, Hillbilly Moon Explosion',
+    date: ' 2011',
+    firstParagraph: `I'd like to pack this in, and take you to the stars
+    We'll eat at fancy restaurants and drive in fancy cars
+    We tried our luck, we made a buck, so lean back have some fun.
+    (Oh yes my love, but first just this last one.) `,
+
+    secondParagraph: `Over the river is cold and black
+    And the bottom is a long way down
+    (Another one, going underground...)
+    Why can't we cut the ropes and let that poor fool go.
+    (Don't you go getting weak on me, not when i need you so.) `,
+
+    thirdParagraph: `We'll stay at home and call this day our own,
+    Listen to a record and watch a candle burn
+    I'm feeling kind of drowsy
+    There's blood on the floor.
+    And when I'm gone you still will have my love forevermore`
   }
 ];
-//intital change: remove//
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
@@ -141,6 +161,15 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   articlep3.textContent = thirdParagraph;
   span.textContent = '+';
 
+  span.addEventListener('click', ()=>{
+    article.classList.toggle('article-open');
+  })
+
   return article;
 }
-console.log(articleMaker(data[0]))
+console.log(articleMaker(data[data.length - 1]));
+
+data.forEach(snippet =>{
+  const format = document.querySelector('.articles');
+  format.appendChild(articleMaker(snippet));
+})
