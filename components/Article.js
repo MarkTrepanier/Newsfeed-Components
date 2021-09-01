@@ -93,7 +93,7 @@ const data = [
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
-
+  
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -114,3 +114,33 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+  const article = document.createElement('div');
+  const articleDate = document.createElement('p');
+  const articleTitle = document.createElement('h2');
+  const articlep1 = document.createElement('p');
+  const articlep2 = document.createElement('p');
+  const articlep3 = document.createElement('p');
+  const span = document.createElement('span');
+
+  article.appendChild(articleDate);
+  article.appendChild(articleTitle);
+  article.appendChild(articlep1);
+  article.appendChild(articlep2);
+  article.appendChild(articlep3);
+  article.appendChild(span);
+
+  article.className = 'article';
+  articleDate.className = 'date';
+  span.className = 'expandButton';
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articlep1.textContent = firstParagraph;
+  articlep2.textContent = secondParagraph;
+  articlep3.textContent = thirdParagraph;
+  span.textContent = '+';
+
+  return article;
+}
+console.log(articleMaker(data[0]))
